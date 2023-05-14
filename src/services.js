@@ -14,7 +14,7 @@ export async function getCity() {
         let data = await response.json();
 
         return data.city;
-    } catch Exception {
+    } catch {
         return "Moscow";
     }
 }
