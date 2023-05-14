@@ -9,7 +9,7 @@ export async function getWeather(city) {
 }
 
 export async function getCity() {
-    let response = await fetch("http://ip-api.com/json/");
+    let response = await fetch("https://ip-api.com/json/");
     let data = await response.json();
 
     return data.city;
