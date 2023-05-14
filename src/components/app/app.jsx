@@ -21,13 +21,13 @@ export default function App() {
     }, []);
 
     useEffect(() => {
-        setIsLoading(true);
         if (!currentCity) return;
         getWeather(currentCity).then(data => {
             if (data["cod"] === "404") {
                 setIsIncorrect(true);
                 setTimeout(() => setIsIncorrect(false), 3000);
             } else {
+                setIsLoading(true);
                 setCurrentWeather(data);
             }
             setIsLoading(false);
