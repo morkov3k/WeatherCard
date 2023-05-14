@@ -13,6 +13,7 @@ export default function App() {
     let [currentWeather, setCurrentWeather] = useState(null);
     let [currentCity, setCurrentCity] = useState("");
     let [isLoading, setIsLoading] = useState(true);
+    let [isIncorrect, setIsIncorrect] = useState(false);
 
 
     useEffect(() => {
@@ -24,8 +25,8 @@ export default function App() {
         if (!currentCity) return;
         getWeather(currentCity).then(data => {
             if (data["cod"] === "404") {
-                document.querySelector("div.incorrect").classList.add("active");
-                setTimeout(() => document.querySelector("div.incorrect").classList.remove("active"), 3000);
+                setIsIncorrect(true);
+                setTimeout(() => setIsIncorrect(false), 3000);
             } else {
                 setCurrentWeather(data);
             }
@@ -38,7 +39,7 @@ export default function App() {
         <div className="app">
             {!isLoading ? 
                 <>
-                    <Header setCurrentCity={setCurrentCity} />
+                    <Header setCurrentCity={setCurrentCity} isIncorrect={isIncorrect} />
                     <div className="main">
                         <div className="main__image">
                             <img src={`https://openweathermap.org/img/wn/${currentWeather["weather"][0]["icon"]}@4x.png`} alt="" />

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./header.css";
 
 
-export default function Header({ setCurrentCity }) {
+export default function Header({ setCurrentCity, isIncorrect }) {
 
     let [inputText, setInputText] = useState("");
 
@@ -24,7 +24,7 @@ export default function Header({ setCurrentCity }) {
                     </svg>
                 </button>
             </div>
-            <div className="incorrect">Incorrect city or country</div>
+            <div className={`incorrect${isIncorrect ? " active" : ""}`}>Incorrect city or country</div>
         </div>
     );
 
