@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 
 import "./header.css";
 
@@ -6,6 +7,13 @@ import "./header.css";
 export default function Header({ setCurrentCity, isIncorrect }) {
 
     let [inputText, setInputText] = useState("");
+
+
+    useEffect(() => {
+        document.addEventListener("keypress", e => {
+            if (e.key === "Enter") setCurrentCity(inputText);
+        });
+    }, []);
 
 
     return (
